@@ -1,0 +1,1 @@
+<h1><?= Yii::t('app', 'Classifieds by Category') ?></h1>
