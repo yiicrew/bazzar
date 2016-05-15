@@ -31,4 +31,9 @@ class CategoryQuery extends \yii\db\ActiveQuery
     {
         return parent::one($db);
     }
+
+    public function forHomePage()
+    {
+        return $this->where("parent_id IS NULL")->all();
+    }
 }

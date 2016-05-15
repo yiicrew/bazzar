@@ -69,4 +69,19 @@ class Category extends \yii\db\ActiveRecord
     {
         return new CategoryQuery(get_called_class());
     }
+
+    public function getChildren()
+    {
+        return $this->hasMany(Category::className(), ['parent_id' => 'id']);
+    }
+
+    public function getParent()
+    {
+        return $this->hasOne(Category::className(), ['id' => 'parent_id']);
+    }
+
+    public function getUrl()
+    {
+        return $this->slug;
+    }
 }

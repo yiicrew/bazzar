@@ -5,10 +5,10 @@
 
 use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
-use app\assets\AppAsset;
+use app\assets\BasicThemeAsset;
 use app\widgets\SiteNavWidget;
 
-AppAsset::register($this);
+BasicThemeAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -35,10 +35,11 @@ AppAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= isset($this->title) ? e($this->title) : params('app_name') ?></title>
     <link href='http://fonts.googleapis.com/css?family=Cuprum&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
-    <link rel="alternate"  type="application/rss+xml" title="<?=Yii::t('app', 'Latest Classifieds')?>" href="<?= Yii::$app->request->baseUrl ?>/rss" />
+    <link rel="alternate"  type="application/rss+xml" title="<?= t('app', 'Latest Classifieds')?>" href="<?= Yii::$app->request->baseUrl ?>/rss" />
     <!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
     <?php $this->head() ?>
 
 </head>

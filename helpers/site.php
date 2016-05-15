@@ -7,6 +7,12 @@ function slugify($str, $separator = '-')
     return trim($str, $separator);
 }
 
+function a($label, $url, $opts = [])
+{
+    return \yii\helpers\Html::a($label, $url, $opts);
+}
+
+
 function e($value)
 {
     return \yii\helpers\Html::encode($value);

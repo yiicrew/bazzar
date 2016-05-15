@@ -16,15 +16,13 @@ class SiteNavWidget extends Widget {
 	        'brandLabel' => params('app_name'),
 	        'brandUrl' => Yii::$app->homeUrl,
 	        'options' => [
-	            'class' => 'navbar-inverse navbar-fixed-top',
+	            'class' => 'navbar-fixed-top',
 	        ],
 	    ]);
 	    echo Nav::widget([
 	        'options' => ['class' => 'navbar-nav navbar-right'],
 	        'items' => [
-	            ['label' => 'Home', 'url' => ['/site/index']],
-	            ['label' => 'About', 'url' => ['/site/about']],
-	            ['label' => 'Contact', 'url' => ['/site/contact']],
+	            ['label' => 'Register', 'url' => ['/user/register']],
 	            Yii::$app->user->isGuest ? (
 	                ['label' => 'Login', 'url' => ['/site/login']]
 	            ) : (
@@ -36,7 +34,8 @@ class SiteNavWidget extends Widget {
 	                )
 	                . Html::endForm()
 	                . '</li>'
-	            )
+	            ),
+	            ['label' => 'Post an ad', 'url' => ['/post-ad'], 'class' => 'btn btn-link'],
 	        ],
 	    ]);
 	    /*
