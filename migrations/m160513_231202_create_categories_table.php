@@ -16,12 +16,16 @@ class m160513_231202_create_categories_table extends Migration
             'id' => $this->primaryKey(),
             "name" => $this->string()->notNull(),
             "slug" => $this->string()->notNull(),
+            "description" => $this->text(),
+            "meta_description" => $this->text(),
+            "meta_keywords" => $this->text(),
             "parent_id" => $this->integer(),
             "is_active" => $this->boolean()->defaultValue(true),
             "created_at" => $this->datetime(),
             "updated_at" => $this->datetime(),
         ]);
         $this->createIndex("categories_parent", "categories", "parent_id");
+        $this->createIndex("categories_is_active", "categories", "is_active");
         $this->createIndex("categories_slug", "categories", "slug");
     }
 

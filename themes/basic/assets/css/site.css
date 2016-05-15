@@ -464,3 +464,11 @@ li.next a			{
 					}
 /*end of filter box*/									
 					
+
+.banner {
+	margin: 20px 0px;
+}
+.banner--728x90 {
+	width: 728px;
+	height: 90px;
+}

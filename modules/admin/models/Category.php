@@ -3,20 +3,22 @@
 namespace app\modules\admin\models;
 
 use Yii;
-use yii\db\ActiveRecord;
-use yii\db\ActiveQuery;
+
 /**
  * This is the model class for table "categories".
  *
  * @property integer $id
  * @property string $name
  * @property string $slug
+ * @property string $description
+ * @property string $meta_description
+ * @property string $meta_keywords
  * @property integer $parent_id
  * @property integer $is_active
  * @property string $created_at
  * @property string $updated_at
  */
-class Category extends ActiveRecord
+class Category extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
@@ -33,6 +35,7 @@ class Category extends ActiveRecord
     {
         return [
             [['name', 'slug'], 'required'],
+            [['description', 'meta_description', 'meta_keywords'], 'string'],
             [['parent_id', 'is_active'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['name', 'slug'], 'string', 'max' => 255],
@@ -48,6 +51,9 @@ class Category extends ActiveRecord
             'id' => Yii::t('app', 'ID'),
             'name' => Yii::t('app', 'Name'),
             'slug' => Yii::t('app', 'Slug'),
+            'description' => Yii::t('app', 'Description'),
+            'meta_description' => Yii::t('app', 'Meta Description'),
+            'meta_keywords' => Yii::t('app', 'Meta Keywords'),
             'parent_id' => Yii::t('app', 'Parent ID'),
             'is_active' => Yii::t('app', 'Is Active'),
             'created_at' => Yii::t('app', 'Created At'),
@@ -55,16 +61,12 @@ class Category extends ActiveRecord
         ];
     }
 
+    /**
+     * @inheritdoc
+     * @return CategoryQuery the active query used by this AR class.
+     */
     public static function find()
     {
         return new CategoryQuery(get_called_class());
-    }
-}
-
-class CategoryQuery extends ActiveQuery
-{
-    public function forHomePage()
-    {
-        return $this->all();
     }
 }

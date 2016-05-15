@@ -1,4 +1,4 @@
-<h1><?=Yii::t('app', 'Latest Classifieds')?></h1>
+<h3><?= Yii::t('app', 'Recently Added') ?></h3>
 <div style="margin-bottom: 10px;">
 	<?php foreach ($listings as $k): ?>
 		<?php

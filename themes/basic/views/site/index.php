@@ -1,15 +1,9 @@
 <?php
 use app\widgets\CategoryWidget;
 use app\widgets\RecentListingsWidget;
+use app\widgets\BannerWidget;
 ?>
 <?= CategoryWidget::widget() ?>
-
-<div style="width:728px; height:90px; margin:20px 0px;">
-	<?= $this->render('@app/views/banners/banner_728x90') ?>
-</div>
-
+<?= BannerWidget::widget(['position' => '728x90']) ?>
 <?= RecentListingsWidget::widget() ?>
-
-<div style="width:728px; height:90px; margin:20px 0px;">
-	<?= $this->render('@app/views/banners/banner_728x90') ?>
-</div>
+<?= BannerWidget::widget(['position' => '728x90']) ?>

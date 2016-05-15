@@ -29,6 +29,7 @@ class m160513_222859_create_listings_table extends Migration
             "is_phone_visible" => $this->boolean()->defaultValue(true),
             "is_email_visible" => $this->boolean()->defaultValue(true),
             "is_published" => $this->boolean()->defaultValue(false),
+            "is_premium" => $this->boolean()->defaultValue(false),
             "expiry_date" => $this->datetime(),
             "created_at" => $this->datetime(),
             "updated_at" => $this->datetime(),
@@ -36,9 +37,12 @@ class m160513_222859_create_listings_table extends Migration
         $this->createIndex("listing_user", "listings", "user_id");
         $this->createIndex("listing_category", "listings", "category_id");
         $this->createIndex("listing_location", "listings", "location_id");
-        $this->createIndex("listing_status", "listings", "is_published");
-        $this->createIndex("listing_highlight", "listings", "rank");
+        $this->createIndex("listing_is_published", "listings", "is_published");
+        $this->createIndex("listing_is_premium", "listings", "is_premium");
+        $this->createIndex("listing_rank", "listings", "rank");
+        $this->createIndex("listing_price", "listings", "price");
         $this->createIndex("listing_type", "listings", "type");
+        $this->createIndex("listing_slug", "listings", "slug");
         $this->createIndex("listing_created_at", "listings", "created_at");
         $this->createIndex("listing_expiry_date", "listings", "expiry_date");
     }
