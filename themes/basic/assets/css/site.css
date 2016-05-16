@@ -7,6 +7,10 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+* {
+	outline: none;
+}
+
 .wrap {
     min-height: 100%;
     height: auto;
@@ -100,6 +104,7 @@ a.desc:after {
 }
 .navbar-nav > li > a, .btn-link {
 	color: white;
+	font-weight: bold;
 }
 .navbar-nav > li > a:hover, .btn-link:hover {
 	color: white;
@@ -109,6 +114,15 @@ a.desc:after {
 	font-weight: bold;
 	font-size: 24px;
 	color: white !important;
+}
+.post-ad-btn {
+	background-color: rgba(0,0,0,.5);
+	margin: 9px 15px;
+	padding: 5px 10px !important;
+	border-radius: 3px;
+}
+.post-ad-btn:hover {
+	background-color: rgba(0,0,0,.4) !important;
 }
 
 /* Widgets or Modules 
@@ -135,8 +149,8 @@ a.desc:after {
 	font-weight: bold;
 	font-size: 16px;
 	padding-bottom: 5px;
-	border-bottom: 1px solid #aaa;
-	color: black;
+	border-bottom: 1px solid #ddd;
+	color: #333;
 	margin-bottom: 15px;
 }
 .category__link--parent:hover {

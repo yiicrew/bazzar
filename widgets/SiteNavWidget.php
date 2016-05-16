@@ -29,13 +29,13 @@ class SiteNavWidget extends Widget {
 	                '<li>'
 	                . Html::beginForm(['/site/logout'], 'post', ['class' => 'navbar-form'])
 	                . Html::submitButton(
-	                    'Logout (' . Yii::$app->user->identity->username . ')',
+	                    'Logout - ' . Yii::$app->user->identity->username,
 	                    ['class' => 'btn btn-link']
 	                )
 	                . Html::endForm()
 	                . '</li>'
 	            ),
-	            ['label' => 'Post an ad', 'url' => ['/post-ad'], 'class' => 'btn btn-link'],
+	            ['label' => 'Post an ad', 'url' => ['/post-ad'], 'linkOptions' => ['class' => 'post-ad-btn']],
 	        ],
 	    ]);
 	    /*

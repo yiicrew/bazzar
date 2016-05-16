@@ -82,6 +82,6 @@ class Category extends \yii\db\ActiveRecord
 
     public function getUrl()
     {
-        return $this->slug;
+        return url($this->slug);
     }
 }

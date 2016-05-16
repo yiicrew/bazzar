@@ -45,6 +45,7 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 'post-ad' => 'listing/create',
+                '<category:[\w-]+>' => 'listing/index',
                 '<controller>/<action>' => '<controller>/<action>',
             ],
         ],
