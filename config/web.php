@@ -44,6 +44,7 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'post-ad' => 'listing/create',
                 '<controller>/<action>' => '<controller>/<action>',
             ],
         ],

@@ -7,11 +7,20 @@ function slugify($str, $separator = '-')
     return trim($str, $separator);
 }
 
+function url($url)
+{
+    return Yii::$app->urlManager->createUrl($url);
+}
+
+function base_url($url = '')
+{
+    return Yii::$app->request->baseUrl . $url;
+}
+
 function a($label, $url, $opts = [])
 {
     return \yii\helpers\Html::a($label, $url, $opts);
 }
-
 
 function e($value)
 {
