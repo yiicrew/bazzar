@@ -1,18 +1,26 @@
-<h3><?= Yii::t('app', 'Recently Added') ?></h3>
-<div style="margin-bottom: 10px;">
-	<?php foreach ($listings as $k): ?>
-		<?php
-		$adUrl = Yii::app()->createUrl('ad/detail' , array('title' => DCUtil::getSeoTitle( stripslashes($k->ad_title) ), 'id' => $k->ad_id));
-		$alt = htmlspecialchars(stripslashes($k->ad_title));
-		?>
-	    <div class="classified_list_container">
-	        <div class="classified_list_pic"><a href="<?=$adUrl?>" title="<?=$alt?>"><img src="<?=$k->getSmallPic( $k->ad_pic )?>" width="120" height="90" alt="<?=$alt?>" /></a></div>
-	        <div class="classified_list_description">
-	            <a href="<?=$adUrl?>" title="<?=$alt?>"><?=stripslashes($k->ad_title)?></a>
-	            <p><?=DCUtil::getShortDescription( stripslashes($k->ad_description) )?></p>
-	            <p class="info"><?=Yii::t('common', 'Location')?> : <b><?=$k->location->location_name?></b> | <?=Yii::t('common', 'Category')?> : <b><?=$k->category->category_title?></b> | <?=Yii::t('common', 'Publish date')?> : <b><?=$k->ad_publish_date?></b></p>
-	        </div>
-	        <div class="clear"></div>
-	    </div>
-	<?php endforeach ?>
+<div class="listings-widget listings-widget--recent">
+    <h3 class="listings-widget__heading"><?= t('app', 'Recently Added') ?></h3>
+    <div class="row">
+    <?php foreach ($listings as $l): ?>
+        <div class="listing col-lg-3">
+            <div class="thumbnail">
+                <img src="<?= $l->thumb ?>" alt="<?=$l->title?>" />
+                <div class="caption listing__details">
+                    <h3 class="listing__title">
+                        <?= a($l->title, $l->viewUrl, [
+                            'title' => $l->title,
+                            'class' => 'listing__link'
+                        ]) ?>
+                    </h3>
+                    <p class="listing__description"><?= e(truncate($l->description)) ?></p>
+                    <p class="listing__meta">
+                        <?= t('app', 'Added at:') ?> : <?= time_ago($l->created_at) ?>
+                    </p>
+                </div>
+            </div>
+            <!-- /thumbnail -->
+        </div>
+    <?php endforeach ?>
+    </div>
 </div>
+<!-- /listings-widget -->
