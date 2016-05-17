@@ -66,7 +66,7 @@ function truncate($_description)
     return $ret;
 }
 
-function video_tag($video)
+function video_player($video)
 {
     // youtube video template
     $youtube = '<iframe width="245" height="245" src="http://www.youtube.com/embed/%s" frameborder="0" allowfullscreen></iframe>';

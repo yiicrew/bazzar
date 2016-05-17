@@ -84,7 +84,7 @@ class Category extends \yii\db\ActiveRecord
         return new CategoryQuery(get_called_class());
     }
 
-    public function toString()
+    public function __toString()
     {
         return $this->name;
     }

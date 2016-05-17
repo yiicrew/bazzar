@@ -126,9 +126,14 @@ class Listing extends \yii\db\ActiveRecord
         return $this->hasOne(Category::className(), ['id' => 'category_id']);
     }
 
-    public function getViewUrl()
+    public function getViewUrl($absoluteUrl = false)
     {
-        return url(['listing/view', 'id' => $this->id, 'slug' => $this->slug]);
+        return url(['listing/view', 'id' => $this->id, 'slug' => $this->slug], $absoluteUrl);
+    }
+
+    public function hasImages()
+    {
+        return !empty($this->images);
     }
 
     // @todo: work out the url from images table

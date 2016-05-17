@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\PostAdForm;
+use app\modules\admin\models\Listing;
 
 class ListingController extends \yii\web\Controller
 {
@@ -29,9 +30,12 @@ class ListingController extends \yii\web\Controller
         return $this->render('update');
     }
 
-    public function actionView()
+    public function actionView($id, $slug)
     {
-        return $this->render('view');
+        $listing = Listing::findOne($id);
+        return $this->render('view', [
+            'listing' => $listing
+        ]);
     }
 
 }
