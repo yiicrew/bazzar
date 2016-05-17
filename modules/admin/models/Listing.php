@@ -6,6 +6,7 @@ use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\behaviors\SluggableBehavior;
 use yii\behaviors\BlameableBehavior;
+use app\models\User;
 
 /**
  * This is the model class for table "listings".
@@ -119,6 +120,11 @@ class Listing extends \yii\db\ActiveRecord
     public function getCategory()
     {
         return $this->hasOne(Category::className(), ['id' => 'category_id']);
+    }
+
+    public function getUser()
+    {
+        return null; // $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 
     public function getLocation()

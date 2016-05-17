@@ -46,38 +46,38 @@ $listingUrl = $listing->getViewUrl(true);
 	
 	<div class="listing-view__meta" style="line-height: 18px; font-size: 12px;">
 		<?php if ($listing->type): ?>
-			<?= t('app', 'Ad Type') ?> : <b><?= t('app', $listing->type) ?></b><br />
+			<?= t('app', 'Listing Type') ?> : <b><?= t('app', $listing->type) ?></b><br />
 		<?php endif ?>
 		<?= t('app', 'Category')?> : <b><?= $listing->category?></b><br />
-		<?= t('app', 'Publish date')?> : <b><?= $listing->created_at ?></b><br />
+		<?= t('app', 'Published')?> : <b><?= time_ago($listing->created_at) ?></b><br />
 		<?php if (!empty($listing->expiry_date)): ?>
 			<?= t('app', 'Listing Valid Until')?> : <b><?= $listing->expiry_date ?></b><br />
 		<?php endif ?>
 		<?php if (!empty($listing->price) && $listing->price > 0): ?>
 			<?= t('app', 'Price') ?>: <b>$<?= $listing->price ?></b><br />
 		<?php endif ?>
-		<?php if (!empty($listing->ad_link)): ?>
-			<?= t('app', 'Web Site')?>: <?= a($listing->link, $listing->link, [
+		<?php if (!empty($listing->website_url)): ?>
+			<?= t('app', 'Web Site')?>: <?= a($listing->website_url, $listing->website_url, [
 					'target' => '_blank',
 					'rel' => 'nofollow'
 				]) ?>
 			<br />
 		<?php endif ?>
-		<?php /* if($listing->ad_puslisher_name){?>
-			<?=Yii::t('app', 'Contact Name')?> : <b><?=$listing->ad_puslisher_name?></b><br />
-		<?}?>	
-		<?if($listing->ad_phone){?>
-			<?=Yii::t('detail_page', 'Phone')?>: <b><?=stripslashes($listing->ad_phone)?></b><br />
-		<?}?>
-		<?if($listing->ad_skype){?>
-			Skype: <a href="skype:<?=$listing->ad_skype?>?chat"><?=stripslashes($listing->ad_skype)?></a><br />
-		<?}?>
-		<?if($listing->location->location_name){?>
-			<?=Yii::t('common', 'Location')?> : <b><?=$ad->location->location_name?></b><br />
-		<?}?>	
-		<?if($ad->ad_address){?>
-			<?=Yii::t('detail_page_v2', 'Adress')?> : <b><?=$ad->ad_address?></b><br />
-		<?} */ ?>
+		<?php if (!empty($listing->user)): ?>
+			<?= t('app', 'Contact Name')?> : <b><?= $listing->user ?></b><br />
+		<?php endif ?>
+		<?php if ($listing->user): ?>
+			<?= t('app', 'Phone') ?>: <b><?= e($listing->phone) ?></b><br />
+		<?php endif ?>
+		<?php if ($listing->user): ?>
+			Skype: <a href="skype:<?=$listing->skype?>?chat"><?= e($listing->skype) ?></a><br />
+		<?php endif ?>
+		<?php if ($listing->location): ?>
+			<?= t('app', 'Location')?> : <b><?= $listing->location ?></b><br />
+		<?php endif ?>
+		<?php if ($listing->address): ?>
+			<?= t('app', 'Adress')?> : <b><?= $listing->address ?></b><br />
+		<?php endif ?>
 	</div>
 		
 		<?php /* if(ENABLE_GOOGLE_MAP && !empty($listing->ad_lat)){?>
@@ -102,7 +102,7 @@ $listingUrl = $listing->getViewUrl(true);
 		<?} */ ?>
 	</div>	
 	<div class="clear"></div>
-	
+
 	<div style="margin-bottom: 10px;">
 		<?php /*
 		$tags = Ad::model()->normalizeTags($listing->ad_tags);
