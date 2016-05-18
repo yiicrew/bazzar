@@ -22,6 +22,11 @@ function a($label, $url, $opts = [])
     return \yii\helpers\Html::a($label, $url, $opts);
 }
 
+function img($url, $opts = [])
+{
+    return \yii\helpers\Html::img($url, $opts);
+}
+
 function e($value)
 {
     return \yii\helpers\Html::encode($value);

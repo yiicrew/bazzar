@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\PostAdForm;
+use app\models\ContactForm;
 use app\modules\admin\models\Listing;
 
 class ListingController extends \yii\web\Controller
@@ -33,8 +34,10 @@ class ListingController extends \yii\web\Controller
     public function actionView($id, $slug)
     {
         $listing = Listing::findOne($id);
+        $contactModal = new ContactForm;
         return $this->render('view', [
-            'listing' => $listing
+            'listing' => $listing,
+            'contactModal' => $contactModal
         ]);
     }
 
