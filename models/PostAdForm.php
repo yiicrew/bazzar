@@ -12,4 +12,6 @@ class PostAdForm extends Listing
 {
     public $verifyCode;
     public $images;
+    public $typeOptions = ['Sale', 'Rent', 'Gift'];
+    public $valid_until;
 }

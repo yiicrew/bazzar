@@ -2,9 +2,13 @@
 
 namespace app\models;
 
-class User extends \yii\base\Object implements \yii\web\IdentityInterface
+class User extends \yii\base\Model implements \yii\web\IdentityInterface
 {
     public $id;
+    public $email;
+    public $name;
+    public $phone;
+    public $skype;
     public $username;
     public $password;
     public $authKey;
@@ -100,5 +104,12 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
     public function validatePassword($password)
     {
         return $this->password === $password;
+    }
+
+    public function attributeLabels()
+    {
+        return [
+            'email' => 'Email'
+        ];
     }
 }

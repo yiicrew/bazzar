@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\PostAdForm;
 use app\models\ContactForm;
+use app\models\User;
 use app\modules\admin\models\Listing;
 
 class ListingController extends \yii\web\Controller
@@ -11,8 +12,10 @@ class ListingController extends \yii\web\Controller
     public function actionCreate()
     {
     	$model = new PostAdForm;
+        $user = new User;
         return $this->render('create', [
-        	'model' => $model
+        	'model' => $model,
+            'user' => $user
         ]);
     }
 
