@@ -84,9 +84,9 @@ class Listing extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'user_id' => Yii::t('app', 'User ID'),
-            'category_id' => Yii::t('app', 'Category ID'),
-            'location_id' => Yii::t('app', 'Location ID'),
+            'user_id' => Yii::t('app', 'User'),
+            'category_id' => Yii::t('app', 'Category'),
+            'location_id' => Yii::t('app', 'Location'),
             'title' => Yii::t('app', 'Title'),
             'slug' => Yii::t('app', 'Slug'),
             'price' => Yii::t('app', 'Price'),
