@@ -19,9 +19,10 @@ class ListingController extends \yii\web\Controller
         ]);
     }
 
-    public function actionIndex($category = null)
+    public function actionIndex($category = null, $id = null)
     {
-        $listings = Listing::find()->all();
+        $listings = Listing::find(['id' => $id])->all();
+
         return $this->render('index', [
             'listings' => $listings
         ]);

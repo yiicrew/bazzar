@@ -5,6 +5,7 @@ use app\widgets\CategoryWidget;
 use app\widgets\RecentListingsWidget;
 use app\widgets\BannerWidget;
 use app\widgets\SimilarListingsWidget;
+$this->title = $listing->title;
 $listingUrl = $listing->getViewUrl(true);
 ?>
 <section class="listing-view">

@@ -101,6 +101,6 @@ class Category extends \yii\db\ActiveRecord
 
     public function getUrl()
     {
-        return url($this->slug);
+        return url(['listing/index', 'category' => $this->slug, 'id' => $this->id]);
     }
 }
