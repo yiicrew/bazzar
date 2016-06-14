@@ -2,19 +2,32 @@
 
 namespace app\controllers;
 
+use Yii;
 use app\models\PostAdForm;
 use app\models\ContactForm;
 use app\models\User;
 use app\modules\admin\models\Listing;
+use yii\web\UploadedFile;
 
 class ListingController extends \yii\web\Controller
 {
     public function actionCreate()
     {
-    	$model = new PostAdForm;
+        $model = new PostAdForm;
         $user = new User;
+        $request = Yii::$app->request;
+
+        if ($model->load($request->post()) && $user->load($request->post())) {
+            $model->imageFiles = UploadedFile::getInstances($model, 'imageFiles');
+            $model->attachUser($user);
+
+            if ($model->uploadAndSave()) {
+                Yii::$app->session->setFlash('success', 'Your listing has been created!');
+            }
+        }
+
         return $this->render('create', [
-        	'model' => $model,
+            'model' => $model,
             'user' => $user
         ]);
     }
