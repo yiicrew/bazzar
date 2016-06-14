@@ -100,3 +100,15 @@ return [
 - Yii won't create the database for you, this has to be done manually before you can access it.
 - Check and edit the other files in the `config/` directory to customize your application as required.
 - Refer to the README in the `tests` directory for information specific to basic application tests.
+
+https://dribbble.com/shots/1046830-Responsive-Classifieds/attachments/127517
+https://dribbble.com/shots/1203385-Property-listings-website/attachments/159942
+https://dribbble.com/shots/2125526-Classified-Design/attachments/386926
+https://dribbble.com/shots/2754745-Design-for-Classified-Ads-Website
+https://dribbble.com/shots/2614962-Lajumate-ro-Unoficial-Redesign/attachments/522019
+https://dribbble.com/shots/2110257-From-Wireframe-to-Design/attachments/382020
+https://dribbble.com/shots/2093933-Classified-Ads-Site-WIP/attachments/377445
+https://dribbble.com/shots/2778138--Exploration-Dashboard-Inventory/attachments/566936
+https://dribbble.com/shots/1689980-Inventory-Animation/attachments/268344
+https://umarket.lt/
+https://www.jualo.com/
