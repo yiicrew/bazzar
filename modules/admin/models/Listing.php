@@ -73,7 +73,7 @@ class Listing extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'category_id', 'location_id', 'title', 'slug', 'description', 'address'], 'required'],
+            [['category_id', 'location_id', 'title', 'slug', 'description', 'address'], 'required'],
             [['user_id', 'category_id', 'location_id', 'views', 'is_phone_visible', 'is_email_visible', 'is_active'], 'integer'],
             [['price', 'minimum_offer_amount', 'lat', 'lon'], 'number'],
             [['description', 'description_filtered'], 'string'],
@@ -130,7 +130,7 @@ class Listing extends \yii\db\ActiveRecord
 
     public function getUser()
     {
-        return null; // $this->hasOne(User::className(), ['id' => 'user_id']);
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 
     public function getLocation()

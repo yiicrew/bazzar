@@ -125,3 +125,8 @@ function time_ago($date)
     }
     return "$difference $periods[$j] {$tense}";
 }
+
+function temp_password($length = 8)
+{
+    return substr(md5(uniqid(time(), true)), 0, $length);
+}

@@ -78,6 +78,12 @@ $config = [
         'admin' => [
             'class' => 'app\modules\admin\Module',
         ],
+        'user' => [
+            'class' => 'dektrium\user\Module',
+            'modelMap' => [
+                'User' => 'app\models\User',
+            ],
+        ],
     ]
 ];
 
