@@ -11,7 +11,7 @@ $this->title = $heading = isset($_GET['category']) ? ucwords($_GET['category']) 
 	    <?php foreach ($listings as $l): ?>
 	    <div class="listing col-lg-3">
 	        <div class="thumbnail">
-	            <img src="<?= $l->thumb ?>" alt="<?=$l->title?>" />
+	            <img src="<?= $l->thumbSrc ?>" alt="<?=$l->title?>" />
 	            <div class="caption listing__details">
 	                <h3 class="listing__title">
 	                    <?= a($l->title, $l->viewUrl, [

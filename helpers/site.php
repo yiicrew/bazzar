@@ -61,12 +61,12 @@ function http_refresh($seconds, $url = '')
 	</script>\n";
 }
 
-function truncate($_description)
+function truncate($str, $limit = 50)
 {
-    $_description = strip_tags($_description);
-    $ret = $_description;
-    if (mb_strlen($_description, 'utf-8') > 250) {
-        $ret = mb_substr($_description, 0, 250, 'utf-8') . ' ...';
+    $str = strip_tags($str);
+    $ret = $str;
+    if (mb_strlen($str, 'utf-8') > $limit) {
+        $ret = mb_substr($str, 0, $limit, 'utf-8') . ' ...';
     }
     return $ret;
 }

@@ -6,8 +6,16 @@ use dektrium\user\models\User as BaseUser;
 
 class User extends BaseUser
 {
+    public $name;
     public $phone;
     public $skype;
+
+    public function rules()
+    {
+        $rules = parent::rules();
+        $rules[] = ['name', 'required'];
+        return $rules;
+    }
 
     public function getName()
     {

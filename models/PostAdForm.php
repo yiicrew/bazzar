@@ -4,6 +4,8 @@ namespace app\models;
 
 use Yii;
 use app\modules\admin\models\Listing;
+use dektrium\user\models\Profile;
+
 
 /**
  * ContactForm is the model behind the contact form.
@@ -36,17 +38,25 @@ class PostAdForm extends Listing
 
         $valid = $this->user->validate() && $this->validate();
         if ($valid) {
-            $this->user->password = temp_password();
-            $this->user->save();
-
+            $this->saveUser();
             $this->user_id = $this->user->id;
-            // store changes to the database
             $this->save();
             $this->saveImages();
             return true;
         }
 
         return false;
+    }
+
+    public function saveUser()
+    {
+        $this->user->password = temp_password();
+        $this->user->username = preg_replace("/[^a-zA-Z0-9]/", "", $this->user->name);
+        $profile = new Profile;
+        $profile->name = $this->user->name;
+
+        $this->user->setProfile($profile);
+        return $this->user->save();
     }
 
     public function saveImages()

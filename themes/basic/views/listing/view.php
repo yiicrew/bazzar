@@ -115,7 +115,7 @@ $listingUrl = $listing->getViewUrl(true);
 
 			<div class="panel panel-default listing-view__description">
 				<div class="panel-body">
-					<?= e($listing->description) ?>
+					<?= nl2br(e($listing->description)) ?>
 				</div>
 			</div>
 			<!-- /listing-view__description -->

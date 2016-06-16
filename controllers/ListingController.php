@@ -34,7 +34,7 @@ class ListingController extends \yii\web\Controller
 
     public function actionIndex($category = null, $id = null)
     {
-        $listings = Listing::find(['id' => $id])->all();
+        $listings = Listing::find()->where(['category_id' => $id])->all();
 
         return $this->render('index', [
             'listings' => $listings
