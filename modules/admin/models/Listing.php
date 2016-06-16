@@ -8,6 +8,7 @@ use yii\behaviors\SluggableBehavior;
 use yii\behaviors\BlameableBehavior;
 use yii\db\Expression;
 use app\models\User;
+use app\models\Image;
 
 /**
  * This is the model class for table "listings".
@@ -133,6 +134,11 @@ class Listing extends \yii\db\ActiveRecord
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 
+    public function getImages()
+    {
+        return $this->hasMany(Image::className(), ['listing_id' => 'id']);
+    }
+
     public function getLocation()
     {
         return $this->hasOne(Category::className(), ['id' => 'category_id']);
@@ -143,14 +149,18 @@ class Listing extends \yii\db\ActiveRecord
         return url(['listing/view', 'id' => $this->id, 'slug' => $this->slug], $absoluteUrl);
     }
 
-    public function hasImages()
+    public function getHasImages()
     {
         return !empty($this->images);
     }
 
     // @todo: work out the url from images table
-    public function getThumb()
+    public function getThumbSrc()
     {
+        if ($this->hasImages) {
+            $image = current($this->images);
+            return $image->public_url;
+        }
         return base_url('img/no_image.jpg');
     }
 }

@@ -10,9 +10,15 @@ $listingUrl = $listing->getViewUrl(true);
 ?>
 <section class="listing-view">
 	<header class="listing-view__header well">
-		<div class="listing-view__actions pull-right">
-			<a href="#"><span class="glyphicon glyphicon-heart-empty"></span> Watch</a> |
-			<a href="#"><span class="glyphicon glyphicon-copy"></span> Post a similar ad</a>
+		<div class="action pull-right">
+			<a href="#" class="action__link">
+				<span class="action__icon glyphicon glyphicon-heart-empty"></span>
+				Watch
+			</a>
+			<a href="#" class="action__link">
+				<span class="action__icon glyphicon glyphicon-copy"></span>
+				Post a similar ad
+			</a>
 		</div>
 
 		<h1 class="listing-view__title"><?= e($listing->title) ?></h1>
@@ -29,26 +35,25 @@ $listingUrl = $listing->getViewUrl(true);
 
 	<div class="row">
 		<div class="listing-view__content col-lg-8">
-			<div class="listing-view__gallery">
-			<?php if ($listing->hasImages()): ?>
-				<?php foreach ($images as $image): ?>
-					<a href="<?= $image->url ?>">
-						<img src="<?= $image->thumbSrc ?>" width="120" height="90" />
-					</a>
+			<div class="gallery">
+				<div class="gallery__preview">
+					<img class="gallery__image" src="<?= $listing->thumbSrc ?>" alt=""/>
+				</div>
+				<div class="gallery__thumbs">
+				<?php foreach ($listing->images as $image): ?>
+					<img class="gallery__thumb" src="<?= $image->thumbSrc ?>" width="120" height="90" />
 				<?php endforeach ?>
-			<?php else: ?>
-				<?= img($listing->thumb) ?>
-			<?php endif ?>
+				</div>
 			</div>
-			<!-- /listing-view__gallery -->
+			<!-- /gallery -->
 
-			<div class="row listing-view__details">
+			<div class="row">
 				<div class="col-lg-6">
-					<table class="table">
+					<table class="table attribute-list">
 						<tbody>
 							<tr>
 								<th><?= t('app', 'Category') ?></th>
-								<td><?= $listing->category?></td>
+								<td><?= $listing->category ?></td>
 							</tr>
 							<tr>
 								<th><?= t('app', 'Published') ?></th>
@@ -75,11 +80,11 @@ $listingUrl = $listing->getViewUrl(true);
 					</table>
 				</div>
 				<div class="col-lg-6">
-					<table class="table">
+					<table class="table attribute-list">
 						<tbody>
 							<tr>
 								<th><?= t('app', 'Category') ?></th>
-								<td><?= $listing->category?></td>
+								<td><?= $listing->category ?></td>
 							</tr>
 							<tr>
 								<th><?= t('app', 'Published') ?></th>
@@ -122,47 +127,65 @@ $listingUrl = $listing->getViewUrl(true);
 
 		<div class="listing-view__sidebar col-lg-4">
 			<div class="clearfix">
-				<div class="report-widget pull-right">
+				<div class="report pull-right">
 		            <a href="#" class="listing-view__report">
 		                <span class="glyphicon glyphicon-flag"></span>
 		                <span>Report</span>
 		            </a>
 	            </div>
 
-				<div class="share-widget clearfix">
-					<div class="share-widget__link share-widget__link--facebook">
+				<div class="share clearfix">
+					<div class="share__link share__link--facebook">
 						<a href="#" target="_blank"><span>Share on Facebook</span></a>
 					</div>
-					<div class="share-widget__link share-widget__link--twitter">
+					<div class="share__link share__link--twitter">
 						<a href="#" target="_blank"><span>Tweet</span></a>
 					</div>
-					<div class="share-widget__link share-widget__link--google-plus">
+					<div class="share__link share__link--google-plus">
 						<a href="#"><span>Share on Google+</span></a>
 					</div>
-					<div class="share-widget__link share-widget__link--pinterest">
+					<div class="share__link share__link--pinterest">
 						<a href="#"  target="_blank"><span>Pin</span></a>
 					</div>
-	                <div class="share-widget__link share-widget__link--email">
+	                <div class="share__link share__link--email">
 	                    <a id="ad-share-friend-link" href="#"><span>Share with a friend</span></a>
 	                </div>
 				</div>
-				<!-- /share-widget -->
+				<!-- /share -->
 			</div>
 
 			<br>
 
 			<div class="panel panel-default">
 				<div class="panel-body">
+
+					<div class="user well clearfix">
 					<?php if (!empty($listing->user)): ?>
-						<?= t('app', 'Contact Name')?> : <b><?= $listing->user ?></b><br />
+						<div class="user__media pull-left">
+							<span class="user__icon glyphicon glyphicon-user"></span>
+						</div>
+						<div class="user__info pull-left">
+							<strong class="user__name"><?= $listing->user ?></strong>
+							<time class="user__member-since">
+								Member since <?= date('Y', $listing->user->created_at) ?>
+							</time>
+						</div>
 					<?php endif ?>
-					<a href="#" class="btn btn-lg btn-primary">Send Message</a>
-					<?php if ($listing->user): ?>
-						<?= t('app', 'Phone') ?>: <b><?= e($listing->phone) ?></b><br />
-					<?php endif ?>
-					<?php if ($listing->user): ?>
-						Skype: <a href="skype:<?=$listing->skype?>?chat"><?= e($listing->skype) ?></a>
-					<?php endif ?>
+					</div>
+
+					<div class="reply">
+						<a href="#" class="btn btn-lg btn-primary u-block">Send Message</a>
+						<?php if ($listing->user): ?>
+							<a href="#">
+								<?= e($listing->user->phone) ?>
+							</a>
+						<?php endif ?>
+						<?php if ($listing->user): ?>
+							<a href="skype:<?= $listing->user->skype ?>?chat">
+								<?= e($listing->user->skype) ?>
+							</a>
+						<?php endif ?>
+					</div>
 				</div>
 			</div>
 

@@ -7,10 +7,15 @@ use dektrium\user\models\User as BaseUser;
 class User extends BaseUser
 {
     public $phone;
-    public $name;
+    public $skype;
 
     public function getName()
     {
-        return $this->name;
+        return !empty($this->profile) && !empty($this->profile->name) ? $this->profile->name : $this->username;
+    }
+
+    public function __toString()
+    {
+    	return $this->getName();
     }
 }

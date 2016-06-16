@@ -36,21 +36,30 @@ class PostAdForm extends Listing
 
         $valid = $this->user->validate() && $this->validate();
         if ($valid) {
-            $path = Yii::$app->basePath . '/web/uploads/';
-            foreach ($this->imageFiles as $file) {
-                $file->saveAs($path . $file->baseName . '.' . $file->extension);
-            }
-            // @todo:
-            // attach images to the model
-            // attach location to the model
+            $this->user->password = temp_password();
+            $this->user->save();
 
-            $this->user->password_hash = temp_password();
-            $userSaved = $this->user->save();
             $this->user_id = $this->user->id;
             // store changes to the database
-            return $this->save(false);
+            $this->save();
+            $this->saveImages();
+            return true;
         }
 
         return false;
+    }
+
+    public function saveImages()
+    {
+        foreach ($this->imageFiles as $file) {
+            $filename = '/uploads/' . $file->baseName . '.' . $file->extension;
+            if ($file->saveAs(Yii::$app->basePath . '/web' . $filename)) {
+                $image = new Image;
+                $image->public_url = $filename;
+                $image->original_url = $filename;
+                $image->listing_id = $this->id;
+                $image->save();
+            }
+        }
     }
 }

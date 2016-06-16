@@ -80,9 +80,8 @@ $config = [
         ],
         'user' => [
             'class' => 'dektrium\user\Module',
-            'modelMap' => [
-                'User' => 'app\models\User',
-            ],
+            'modelMap' => ['User' => 'app\models\User'],
+            'admins' => ['admin']
         ],
     ]
 ];
