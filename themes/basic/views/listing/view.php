@@ -16,7 +16,7 @@ $listingUrl = $listing->getViewUrl(true);
 				Watch
 			</a>
 			<a href="#" class="action__link">
-				<span class="action__icon glyphicon glyphicon-copy"></span>
+				<span class="action__icon glyphicon glyphicon-duplicate"></span>
 				Post a similar ad
 			</a>
 		</div>
@@ -128,13 +128,14 @@ $listingUrl = $listing->getViewUrl(true);
 		<div class="listing-view__sidebar col-lg-4">
 			<div class="clearfix">
 				<div class="report pull-right">
-		            <a href="#" class="listing-view__report">
-		                <span class="glyphicon glyphicon-flag"></span>
-		                <span>Report</span>
+		            <a href="#" class="report__link">
+		                <span class="report__icon glyphicon glyphicon-flag"></span>
+		                <span class="report__label">Report</span>
 		            </a>
 	            </div>
+	            <!-- /report -->
 
-				<div class="share clearfix">
+				<div class="share">
 					<div class="share__link share__link--facebook">
 						<a href="#" target="_blank"><span>Share on Facebook</span></a>
 					</div>
@@ -158,7 +159,6 @@ $listingUrl = $listing->getViewUrl(true);
 
 			<div class="panel panel-default">
 				<div class="panel-body">
-
 					<div class="user well clearfix">
 					<?php if (!empty($listing->user)): ?>
 						<div class="user__media pull-left">
@@ -172,7 +172,7 @@ $listingUrl = $listing->getViewUrl(true);
 						</div>
 					<?php endif ?>
 					</div>
-
+					<!-- /user -->
 					<div class="reply">
 						<a href="#" class="btn btn-lg btn-primary u-block">Send Message</a>
 						<?php if ($listing->user): ?>
@@ -186,8 +186,23 @@ $listingUrl = $listing->getViewUrl(true);
 							</a>
 						<?php endif ?>
 					</div>
+					<!-- /reply -->
 				</div>
 			</div>
+			<!-- /panel -->
+
+			<div class="safety clearfix">
+				<div class="safety__media pull-left">
+					<span class="safety__icon glyphicon glyphicon-ok-sign"></span>
+				</div>
+				<div class="safety__info">
+					<p class="safety__tip">
+						Always meet the seller face-to-face to inspect and test drive the car. 
+					</p>
+					<a href="#" class="safety__link">Find more helpful hints here</a>
+				</div>
+			</div>
+			<!-- /safety -->
 
 		</div>
 		<!-- /listing-view__sidebar -->

@@ -17,7 +17,7 @@
                         </h3>
                         <p class="listing__description"><?= e(truncate($l->description)) ?></p>
                         <p class="listing__meta">
-                            <?= t('app', 'Added at:') ?> : <?= time_ago($l->created_at) ?>
+                            Posted <?= time_ago($l->created_at) ?>
                         </p>
                     </div>
                 </div>

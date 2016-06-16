@@ -203,8 +203,7 @@ a.desc:after {
 
 .share {}
 .share__link {
-  display: block;
-  float: left;
+  display: inline-block;
   width: 32px;
   height: 32px;
   margin: 0 2px;
@@ -238,7 +237,7 @@ a.desc:after {
   margin-bottom: var(--base-margin);
 }
 .user__media {
-  padding: 10px;
+  padding: 10px 10px 10px 0;
 }
 .user__icon {
   font-size: 24px;
@@ -251,6 +250,20 @@ a.desc:after {
   font-size: 12px;
   display: block;
 }
+
+.safety {}
+.safety__media {
+  padding: 10px 10px 10px 0;
+  width: 50px;
+}
+.safety__info {
+}
+.safety__icon {
+  font-size: 32px;
+  color: green;
+}
+.safety__tip {}
+.safety__link {}
 
 /* Utils */
 .u-block {
