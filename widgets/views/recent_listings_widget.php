@@ -2,18 +2,20 @@
     <h3 class="listings-widget__heading"><?= t('app', 'Recently Added') ?></h3>
     <div class="row">
     <?php foreach ($listings as $l): ?>
-        <div class="listing col-lg-3">
-            <div class="thumbnail">
-                <img src="<?= $l->thumbSrc ?>" alt="<?= $l->title ?>" />
-                <div class="caption listing__details">
-                    <h3 class="listing__title">
+        <div class="col-sm-3">
+            <div class="card card--listing">
+                <div class="card-media">
+                    <img class="card-img-top" src="<?= $l->thumbSrc ?>" alt="<?= $l->title ?>">
+                </div>
+                <div class="card-block">
+                    <h3 class="card-title">
                         <?= a($l->title, $l->viewUrl, [
                             'title' => $l->title,
-                            'class' => 'listing__link'
+                            'class' => 'card-link'
                         ]) ?>
                     </h3>
-                    <p class="listing__description"><?= e(truncate($l->description)) ?></p>
-                    <p class="listing__meta">
+                    <p class="card-text"><?= e(truncate($l->description)) ?></p>
+                    <p class="card-meta">
                         <?= t('app', 'Added at') ?>: <?= time_ago($l->created_at) ?>
                     </p>
                 </div>

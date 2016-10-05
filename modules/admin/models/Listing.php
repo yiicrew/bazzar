@@ -158,7 +158,7 @@ class Listing extends \yii\db\ActiveRecord
     public function getThumbSrc()
     {
         if ($this->hasImages) {
-            $image = current($this->images);
+            $image = $this->images[0];
             return $image->public_url;
         }
         return base_url('img/no_image.jpg');

@@ -12,9 +12,9 @@ use app\modules\admin\models\Category;
 $this->title = 'Post an ad';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<h1 class="publish__heading">
-    <?= t('app', 'Post an Ad')?>
-</h1>
+
+<h1 class="heading heading--page"><?= t('app', 'Post an Ad')?></h1>
+
 <?php if (Yii::$app->session->hasFlash('success')): ?>
     <div class="alert">
         <?= t('app', 'Your Classified is published.') ?>
@@ -27,44 +27,32 @@ $this->params['breadcrumbs'][] = $this->title;
             'enctype' => 'multipart/form-data'
         ]
     ]) ?>
-        <div class="panel panel-default">
-            <div class="panel-heading">
+        <div class="card card-default">
+            <div class="card-header">
                 <h4><?= t('app', 'Ad Details') ?></h4>
             </div>
-            <div class="panel-body">
+            <div class="card-block">
                 <div>
                     <?= $form->errorSummary($model) ?>
                 </div>
-                <div class="form-group form-inline">
-                    <?= $form->field($model, 'type')->radioList($model->typeOptions) ?>
-                </div>
-                <div class="form-group">
-                    <?= $form->field($model, 'title') ?>
-                </div>
-                <div class="form-group">
+                <?= $form->field($model, 'type')->radioList($model->typeOptions) ?>
+                <?= $form->field($model, 'title') ?>
                 <?= $form->field($model, 'category_id')->dropDownList(
                     ArrayHelper::map(Category::find()->all(), 'id', 'name')
                 ) ?> 
-                </div>
-                <div class="form-group">
-                    <?= $form->field($model, 'expiry_date') ?> 
-                </div>
-                <div class="form-group">
-                    <?= $form->field($model, 'description')->textArea([
-                        'rows' => 10
-                    ]) ?>
-                </div>
-                <div class="form-group">
-                    <?= $form->field($model, 'price') ?>
-                </div>
+                <?= $form->field($model, 'expiry_date') ?> 
+                <?= $form->field($model, 'description')->textArea([
+                    'rows' => 10
+                ]) ?>
+                <?= $form->field($model, 'price') ?>
             </div>
         </div>
 
-        <div class="panel panel-default">
-            <div class="panel-heading">
+        <div class="card card-default">
+            <div class="card-header">
                 <h4><?= t('app', 'Pictures') ?></h4>
             </div>
-            <div class="panel-body">
+            <div class="card-block">
                 <div class="form-group">
                     <?= $form->field($model, 'imageFiles[]')->fileInput([
                         'multiple' => true, 'accept' => 'image/*'
@@ -73,11 +61,11 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
 
-        <div class="panel panel-default">
-            <div class="panel-heading">
+        <div class="card card-default">
+            <div class="card-header">
                 <h4><?= t('app', 'Contact Details') ?></h4>
             </div>
-            <div class="panel-body">
+            <div class="card-block">
                 <div class="form-group">
                     <?= $form->field($user, 'email') ?>
                 </div>
@@ -104,11 +92,11 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
 
-        <div class="panel panel-default">
-            <div class="panel-heading">
+        <div class="card card-default">
+            <div class="card-header">
                 <h4>Finishing Up</h4>
             </div>
-            <div class="panel-body">
+            <div class="card-block">
                 <p>By posting your ad, you are agreeing to our terms of use and privacy policy.</p>
                 <div class="form-group buttons">
                         <?= Html::submitButton($model->isNewRecord ? t('app', 'Post my Ad') : t('admin', 'Save Changes'), [

@@ -1,7 +1,5 @@
 <?php
 
-$params = require __DIR__ . '/params.php';
-
 $config = [
     'id' => 'basic',
     // 'language' => 'en-US',
@@ -39,7 +37,7 @@ $config = [
                 ],
             ],
         ],
-        'db' => require __DIR__ . '/db.php',
+        'db' => require(__DIR__ . DS . YII_DEBUG ? 'db.local.php' : 'db.php'),
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
@@ -73,7 +71,7 @@ $config = [
             ],
         ],
     ],
-    'params' => $params,
+    'params' => require(__DIR__ . DS . 'params.php'),
     'modules' => [
         'admin' => [
             'class' => 'app\modules\admin\Module',

@@ -39,7 +39,7 @@ BasicThemeAsset::register($this);
     <!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
     <?php $this->head() ?>
 
 </head>
@@ -68,6 +68,8 @@ BasicThemeAsset::register($this);
     <div class="container">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+            'itemTemplate' => '<li class="breadcrumb-item">{link}</li>',
+            'activeItemTemplate' => '<li class="breadcrumb-item active">{link}</li>'
         ]) ?>
         <?= $content ?>
     </div>
@@ -75,10 +77,10 @@ BasicThemeAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <div class="pull-left">
+        <div class="pull-lg-left">
             <p>Copyright &copy; <?= params('app_name') ?> <?= date('Y') ?></p>
         </div>
-        <div class="pull-right">
+        <div class="pull-lg-right">
             <p>Bazzar 0.1</p>
         </div>
     </div>

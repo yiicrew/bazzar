@@ -12,6 +12,12 @@ class SiteNavWidget extends Widget {
 
 	public function run()
 	{
+		$items = [
+            ['label' => 'Register', 'url' => ['/user/register']],
+            $this->getUserLink(),
+            ['label' => 'Post an ad', 'url' => ['/post-ad'], 'linkOptions' => ['class' => 'btn btn--post-ad']],
+        ];
+
 		NavBar::begin([
 	        'brandLabel' => params('app_name'),
 	        'brandUrl' => Yii::$app->homeUrl,
@@ -20,23 +26,8 @@ class SiteNavWidget extends Widget {
 	        ],
 	    ]);
 	    echo Nav::widget([
-	        'options' => ['class' => 'navbar-nav navbar-right'],
-	        'items' => [
-	            ['label' => 'Register', 'url' => ['/user/register']],
-	            Yii::$app->user->isGuest ? (
-	                ['label' => 'Login', 'url' => ['/user/login']]
-	            ) : (
-	                '<li>'
-	                . Html::beginForm(['/user/logout'], 'post', ['class' => 'navbar-form'])
-	                . Html::submitButton(
-	                    'Logout - ' . Yii::$app->user->identity->username,
-	                    ['class' => 'btn btn-link']
-	                )
-	                . Html::endForm()
-	                . '</li>'
-	            ),
-	            ['label' => 'Post an ad', 'url' => ['/post-ad'], 'linkOptions' => ['class' => 'post-ad-btn']],
-	        ],
+	        'options' => ['class' => 'navbar-nav pull-lg-right'],
+	        'items' => $items,
 	    ]);
 	    /*
 	    <form action="<?=Yii::$app->createUrl('listings/search')?>" method="get">
@@ -45,5 +36,18 @@ class SiteNavWidget extends Widget {
 		</form>
 		*/
 	    NavBar::end();
+	}
+
+	public function getUserLink()
+	{
+		if (Yii::$app->user->isGuest) {
+	        return ['label' => 'Login', 'url' => ['/user/login']];
+	    } else {
+            return '<li>'
+            . Html::beginForm(['/user/logout'], 'post', ['class' => 'navbar-form'])
+            . Html::submitButton('Logout - ' . Yii::$app->user->identity->username, ['class' => 'btn btn-link'])
+            . Html::endForm()
+            . '</li>';
+	    };
 	}
 }
