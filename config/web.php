@@ -44,6 +44,7 @@ $config = [
             'rules' => [
                 'post-ad' => 'listing/create',
                 'v/<id:[\d]+>/<slug>' => 'listing/view',
+                'ads/<tag:[\w-]+>' => 'listing/index',
                 '<category:[\w-]+>/<id:[\d]+>' => 'listing/index',
                 '<controller>/<action>' => '<controller>/<action>',
             ],

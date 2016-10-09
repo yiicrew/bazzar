@@ -163,4 +163,14 @@ class Listing extends \yii\db\ActiveRecord
         }
         return base_url('img/no_image.jpg');
     }
+
+    public function getTags()
+    {
+        return 'Motor, Engine, Water Pump';
+    }
+
+    public function getCoordinates()
+    {
+        return $this->lat . $this->lon;
+    }
 }

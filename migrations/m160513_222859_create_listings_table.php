@@ -21,7 +21,7 @@ class m160513_222859_create_listings_table extends Migration
             "title" => $this->string()->notNull(),
             "slug" => $this->string()->notNull(),
             "price" => $this->double(10,2)->defaultValue(0.00),
-            "price_type" => $this->string()->defaultValue('FIXED'),
+            "price_type" => $this->string()->defaultValue('FIXED'), // [FIXED, FREE, NEGOTIABLE]
             "minimum_offer_amount" => $this->double(10,2)->defaultValue(0.00),
             "description" => $this->text()->notNull(),
             "description_filtered" => $this->text(),

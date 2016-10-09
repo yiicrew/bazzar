@@ -5,6 +5,9 @@ use app\widgets\CategoryWidget;
 use app\widgets\RecentListingsWidget;
 use app\widgets\BannerWidget;
 use app\widgets\SimilarListingsWidget;
+use app\widgets\TagsWidget;
+use app\widgets\GoogleMapWidget;
+
 $this->title = $listing->title;
 $listingUrl = $listing->getViewUrl(true);
 ?>
@@ -127,7 +130,7 @@ $listingUrl = $listing->getViewUrl(true);
 
 		<div class="listing-view__sidebar col-lg-4">
 			<div class="clearfix">
-				<div class="report pull-right">
+				<div class="report pull-sm-right">
 		            <a href="#" class="report__link">
 		                <span class="report__icon glyphicon glyphicon-flag"></span>
 		                <span class="report__label">Report</span>
@@ -157,22 +160,22 @@ $listingUrl = $listing->getViewUrl(true);
 
 			<br>
 
-			<div class="panel panel-default">
-				<div class="panel-body">
-					<div class="user well clearfix">
+			<div class="card card--user">
+				<div class="card-block">
 					<?php if (!empty($listing->user)): ?>
-						<div class="user__media pull-left">
+					<div class="user clearfix">
+						<div class="user__media pull-sm-left">
 							<span class="user__icon glyphicon glyphicon-user"></span>
 						</div>
-						<div class="user__info pull-left">
+						<div class="user__info pull-sm-left">
 							<strong class="user__name"><?= $listing->user ?></strong>
 							<time class="user__member-since">
 								Member since <?= date('Y', $listing->user->created_at) ?>
 							</time>
 						</div>
-					<?php endif ?>
 					</div>
 					<!-- /user -->
+					<?php endif ?>
 					<div class="reply">
 						<a href="#" class="btn btn-lg btn-primary u-block">Send Message</a>
 						<?php if ($listing->user): ?>
@@ -189,7 +192,7 @@ $listingUrl = $listing->getViewUrl(true);
 					<!-- /reply -->
 				</div>
 			</div>
-			<!-- /panel -->
+			<!-- /card -->
 
 			<div class="safety clearfix">
 				<div class="safety__media pull-left">
@@ -214,43 +217,15 @@ $listingUrl = $listing->getViewUrl(true);
 	</div>
 	<?php endif ?>
 
-
 	<?php // $this->render('_message_form', ['model' => $contactModal]) ?>
-		
-		<?php /* if(ENABLE_GOOGLE_MAP && !empty($listing->ad_lat)){?>
-			<div class="info_box">
-				<div id="gmap_detail" style="width: 245px; height:245px;"></div>
-				<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true&language=<?=APP_LANG?>"></script>
-				<script type="text/javascript">
-					var latlng = new google.maps.LatLng(<?=$listing->ad_lat?>);
-					var myOptions = {
-					  zoom: 16,
-					  center: latlng,
-					  mapTypeId: google.maps.MapTypeId.ROADMAP
-					};
-					map = new google.maps.Map(document.getElementById("gmap_detail"), myOptions);
-					marker = new google.maps.Marker({
-					  map: map,
-					  draggable:true,
-					  position: latlng
-					});
-				</script>
-			</div>	
-		</div>	
-		<?} */ ?>
+
+	<?= GoogleMapWidget::widget([
+		'coordinates' => $listing->coordinates,
+		'address' => $listing->address
+	]) ?>
 
 	<div class="listing-view__tags">
-		<?php /*
-		$tags = Ad::model()->normalizeTags();
-		$listing->tags;
-		if(!empty($tags)){
-			foreach ($tags as $k) {
-				$link = Yii::app()->createUrl('ad/index', array('search_string' => stripslashes($k)));
-				$tagsArray[] = '<a href="' . $link . '" class="tag_link" title="' . htmlspecialchars(stripslashes($k)) . '">' . stripslashes($k) . '</a>';
-			}
-			echo join(' ', $tagsArray);
-		}
-		*/ ?>
+		<?= TagsWidget::widget(['tags' => $listing->tags]) ?>
 	</div>
 	<!-- /listing-view__tags -->
 </section>
