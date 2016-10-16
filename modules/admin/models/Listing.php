@@ -159,7 +159,7 @@ class Listing extends \yii\db\ActiveRecord
     {
         if ($this->hasImages) {
             $image = $this->images[0];
-            return $image->public_url;
+            return $image->publicUrl;
         }
         return base_url('img/no_image.jpg');
     }

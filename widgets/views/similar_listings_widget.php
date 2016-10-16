@@ -1,31 +1,28 @@
-<div class="panel panel-default listings-widget listings-widget--similar">
-    <div class="panel-heading">
-	   <h4 class="listings-widget__heading"><?= t('app', 'Related Listings') ?></h4>
-    </div>
-    <div class="panel-body">
-    	<div class="row">
-    	<?php foreach ($listings as $l): ?>
-            <div class="listing col-lg-4">
-                <div class="thumbnail">
-                    <img src="<?= $l->thumbSrc ?>" alt="<?=$l->title?>" />
-                    <div class="caption listing__details">
-                        <h3 class="listing__title">
-                            <?= a($l->title, $l->viewUrl, [
-                                'title' => $l->title,
-                                'class' => 'listing__link'
-                            ]) ?>
-                        </h3>
-                        <p class="listing__description"><?= e(truncate($l->description)) ?></p>
-                        <p class="listing__meta">
-                            Posted <?= time_ago($l->created_at) ?>
-                        </p>
-                    </div>
+<div class="widget widget--listing-related">
+    <h3 class="widget__heading"><?= t('app', 'Related Listings') ?></h3>
+    <div class="widget__body row">
+    <?php foreach ($listings as $l): ?>
+        <div class="col-sm-4">
+            <div class="card card--listing">
+                <div class="card-media">
+                    <img class="card-img-top" src="<?= $l->thumbSrc ?>" alt="<?= $l->title ?>">
                 </div>
-                <!-- /thumbnail -->
+                <div class="card-block">
+                    <h3 class="card-title">
+                        <?= a($l->title, $l->viewUrl, [
+                            'title' => $l->title,
+                            'class' => 'card-link'
+                        ]) ?>
+                    </h3>
+                    <p class="card-text"><?= e(truncate($l->description)) ?></p>
+                    <p class="card-text card-meta">
+                        <small class="text-muted"><?= t('app', 'Posted') ?>: <?= time_ago($l->created_at) ?></small>
+                    </p>
+                </div>
             </div>
-        <?php endforeach ?>
+            <!-- /thumbnail -->
         </div>
+    <?php endforeach ?>
     </div>
-    <!-- /panel-body -->
 </div>
-<!-- /listing-widget -->
+<!-- /listings-widget -->

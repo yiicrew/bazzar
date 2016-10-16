@@ -37,7 +37,7 @@ $config = [
                 ],
             ],
         ],
-        'db' => require(__DIR__ . DS . YII_DEBUG ? 'db.local.php' : 'db.php'),
+        'db' => require(__DIR__ . DIRECTORY_SEPARATOR . YII_DEBUG ? 'db.local.php' : 'db.php'),
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
@@ -72,7 +72,7 @@ $config = [
             ],
         ],
     ],
-    'params' => require(__DIR__ . DS . 'params.php'),
+    'params' => require(__DIR__ . DIRECTORY_SEPARATOR . 'params.php'),
     'modules' => [
         'admin' => [
             'class' => 'app\modules\admin\Module',

@@ -9,9 +9,11 @@ use Yii;
  *
  * @property integer $id
  * @property integer $listing_id
- * @property string $public_url
- * @property string $original_url
+ * @property string $file_name
+ * @property integer $file_size
+ * @property string $file_type
  * @property string $created_at
+ * @property string $updated_at
  */
 class Image extends \yii\db\ActiveRecord
 {
@@ -29,10 +31,10 @@ class Image extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['listing_id'], 'integer'],
-            [['public_url', 'original_url'], 'required'],
-            [['created_at'], 'safe'],
-            [['public_url', 'original_url'], 'string', 'max' => 255],
+            [['listing_id', 'file_size'], 'integer'],
+            [['file_name', 'file_size', 'file_type'], 'required'],
+            [['created_at', 'updated_at'], 'safe'],
+            [['file_name', 'file_type'], 'string', 'max' => 255],
         ];
     }
 
@@ -42,16 +44,32 @@ class Image extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'listing_id' => 'Listing ID',
-            'public_url' => 'Public Url',
-            'original_url' => 'Original Url',
-            'created_at' => 'Created At',
+            'id' => Yii::t('app', 'ID'),
+            'listing_id' => Yii::t('app', 'Listing ID'),
+            'file_name' => Yii::t('app', 'File Name'),
+            'file_size' => Yii::t('app', 'File Size'),
+            'file_type' => Yii::t('app', 'File Type'),
+            'created_at' => Yii::t('app', 'Created At'),
+            'updated_at' => Yii::t('app', 'Updated At'),
         ];
+    }
+
+    /**
+     * @inheritdoc
+     * @return ImageQuery the active query used by this AR class.
+     */
+    public static function find()
+    {
+        return new ImageQuery(get_called_class());
+    }
+    
+    public function getPublicUrl()
+    {
+        return $this->file_name;
     }
 
     public function getThumbSrc()
     {
-        return $this->public_url;
+       return $this->file_name;
     }
 }

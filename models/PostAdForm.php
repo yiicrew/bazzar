@@ -65,8 +65,9 @@ class PostAdForm extends Listing
             $filename = '/uploads/' . $file->baseName . '.' . $file->extension;
             if ($file->saveAs(Yii::$app->basePath . '/web' . $filename)) {
                 $image = new Image;
-                $image->public_url = $filename;
-                $image->original_url = $filename;
+                $image->file_name = $filename;
+                $image->file_type = $file->extension;
+                $image->file_size = $file->size;
                 $image->listing_id = $this->id;
                 $image->save();
             }

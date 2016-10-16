@@ -12,28 +12,30 @@ $this->title = $listing->title;
 $listingUrl = $listing->getViewUrl(true);
 ?>
 <section class="listing-view">
-	<header class="listing-view__header well">
-		<div class="action pull-right">
-			<a href="#" class="action__link">
-				<span class="action__icon glyphicon glyphicon-heart-empty"></span>
-				Watch
-			</a>
-			<a href="#" class="action__link">
-				<span class="action__icon glyphicon glyphicon-duplicate"></span>
-				Post a similar ad
-			</a>
-		</div>
+	<header class="card listing-view__header well">
+		<div class="card-block">
+			<div class="action pull-sm-right">
+				<a href="#" class="action__link">
+					<span class="action__icon glyphicon glyphicon-heart-empty"></span>
+					Watch
+				</a>
+				<a href="#" class="action__link">
+					<span class="action__icon glyphicon glyphicon-duplicate"></span>
+					Post a similar ad
+				</a>
+			</div>
 
-		<h1 class="listing-view__title"><?= e($listing->title) ?></h1>
-		<?php if (!empty($listing->price) && $listing->price > 0): ?>
-			<h5 class="listing-view__price">$<?= $listing->price ?> <?= $listing->price_type ?></h5>
-		<?php endif ?>
-		<?php if ($listing->address): ?>
-			<p class="listing-view__address">
-				<span class="glyphicon glyphicon-map-marker"></span>
-				<?= $listing->address ?>
-			</p>
-		<?php endif ?>
+			<h1 class="listing-view__title"><?= e($listing->title) ?></h1>
+			<?php if (!empty($listing->price) && $listing->price > 0): ?>
+				<h5 class="listing-view__price">$<?= $listing->price ?> <?= $listing->price_type ?></h5>
+			<?php endif ?>
+			<?php if ($listing->address): ?>
+				<p class="listing-view__address">
+					<span class="glyphicon glyphicon-map-marker"></span>
+					<?= $listing->address ?>
+				</p>
+			<?php endif ?>
+		</div>
 	</header>
 
 	<div class="row">
@@ -116,8 +118,8 @@ $listingUrl = $listing->getViewUrl(true);
 			</div>
 			<!-- /listing-view__details -->
 
-			<div class="panel panel-default listing-view__description">
-				<div class="panel-body">
+			<div class="card card-default listing-view__description">
+				<div class="card-block">
 					<?= nl2br(e($listing->description)) ?>
 				</div>
 			</div>

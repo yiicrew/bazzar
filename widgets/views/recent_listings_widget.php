@@ -15,8 +15,8 @@
                         ]) ?>
                     </h3>
                     <p class="card-text"><?= e(truncate($l->description)) ?></p>
-                    <p class="card-meta">
-                        <?= t('app', 'Added at') ?>: <?= time_ago($l->created_at) ?>
+                    <p class="card-text card-meta">
+                        <small class="text-muted"><?= t('app', 'Posted') ?>: <?= time_ago($l->created_at) ?></small>
                     </p>
                 </div>
             </div>
