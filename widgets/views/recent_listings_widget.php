@@ -1,6 +1,6 @@
 <div class="widget widget--listing-recent">
     <h3 class="widget__heading"><?= t('app', 'Recently Added') ?></h3>
-    <div class="widget__body row">
+    <div class="widget__content row">
     <?php foreach ($listings as $l): ?>
         <div class="col-sm-3">
             <div class="card card--listing">

@@ -2,6 +2,6 @@
 
 return [
     'adminEmail' => 'admin@example.com',
-    'app_name' => 'Bazzar',
+    'appName' => 'Bazzar',
     'cdn' => 'http://localhost/bazzar/web/uploads/'
 ];

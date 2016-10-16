@@ -1,6 +1,6 @@
 <div class="widget widget--listing-related">
     <h3 class="widget__heading"><?= t('app', 'Related Listings') ?></h3>
-    <div class="widget__body row">
+    <div class="widget__content row">
     <?php foreach ($listings as $l): ?>
         <div class="col-sm-4">
             <div class="card card--listing">

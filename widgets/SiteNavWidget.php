@@ -19,7 +19,7 @@ class SiteNavWidget extends Widget {
         ];
 
 		NavBar::begin([
-	        'brandLabel' => params('app_name'),
+	        'brandLabel' => params('appName'),
 	        'brandUrl' => Yii::$app->homeUrl,
 	        'options' => [
 	            'class' => 'navbar-fixed-top',

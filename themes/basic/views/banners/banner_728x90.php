@@ -1,1 +1,0 @@
-<a href=""><img src="<?php $this->theme->getUrl("assets/img/banner_728_90.gif") ?>" width="728" height="90" alt="" /></a>

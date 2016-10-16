@@ -12,92 +12,105 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+
 * {
 	outline: none;
 }
 
-.glyphicon {
-  font-size: 18px;
-  vertical-align: top;
+
+/* Utils
+=================================== */
+.u-block {
+  display: block;
 }
 
-.wrap {
-  min-height: 100%;
-  height: auto;
-  margin: 0 auto -60px;
-  padding: 0 0 60px;
+
+/* Layout
+=================================== */
+.site-header {}
+
+.site-content {}
+.site-content--spaced {
+  margin-top: 90px;
 }
 
-.wrap > .container {
-  padding: 70px 15px 20px;
+.site-footer {
+  height: 60px;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+  background-color: #f5f5f5;
 }
 
-.footer {
-    height: 60px;
-    background-color: #f5f5f5;
-    border-top: 1px solid #ddd;
-    padding-top: 20px;
+.main {}
+
+.sidebar {}
+.sidebar--left {}
+.sidebar--right {}
+
+/* Components
+=================================== */
+.widget {}
+.widget__heading {
+  margin-bottom: 30px;
+}
+
+.filter {}
+.filter__heading {
+  margin-bottom: 15px;
 }
 
 .jumbotron {
-    text-align: center;
-    background-color: transparent;
+  text-align: center;
+  background-color: transparent;
 }
-
 .jumbotron .btn {
-    font-size: 21px;
-    padding: 14px 24px;
+  font-size: 21px;
+  padding: 14px 24px;
 }
 
 .not-set {
-    color: #c55;
-    font-style: italic;
+  color: #c55;
+  font-style: italic;
 }
 
-/* add sorting icons to gridview sort links */
 a.asc:after, a.desc:after {
-    position: relative;
-    top: 1px;
-    display: inline-block;
-    font-family: 'Glyphicons Halflings';
-    font-style: normal;
-    font-weight: normal;
-    line-height: 1;
-    padding-left: 5px;
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  padding-left: 5px;
 }
-
 a.asc:after {
-    content: /*"\e113"*/ "\e151";
+  content: /*"\e113"*/ "\e151";
 }
-
 a.desc:after {
-    content: /*"\e114"*/ "\e152";
+  content: /*"\e114"*/ "\e152";
 }
-
 .sort-numerical a.asc:after {
-    content: "\e153";
+  content: "\e153";
 }
-
 .sort-numerical a.desc:after {
-    content: "\e154";
+  content: "\e154";
 }
-
 .sort-ordinal a.asc:after {
-    content: "\e155";
+  content: "\e155";
 }
-
 .sort-ordinal a.desc:after {
-    content: "\e156";
+  content: "\e156";
 }
 
+.grid-view {}
 .grid-view th {
-    white-space: nowrap;
+  white-space: nowrap;
 }
 
 .hint-block {
-    display: block;
-    margin-top: 5px;
-    color: #999;
+  display: block;
+  margin-top: 5px;
+  color: #999;
 }
 
 .error-summary {
@@ -112,35 +125,28 @@ a.desc:after {
 	background-color: #CC0001;
 	border: none;
 }
-
 .navbar-nav {
   padding-top: 5px;
 }
-
 .navbar-nav .nav-link {
 	color: white;
 	font-weight: 500;
 }
-
 .navbar-nav .nav-link:hover {
 	color: white;
 	background: none;
 }
-
 .navbar-brand {
 	font-weight: bold;
 	font-size: 24px;
 	color: white;
 }
-
 .navbar-brand:hover,
 .navbar-brand:focus, 
 .navbar-brand:active {
   color: white;
 }
 
-/* Widgets
-======================*/
 .banner {
 	margin: 20px 0px;
 }
@@ -149,10 +155,6 @@ a.desc:after {
 	height: 90px;
 }
 
-.category-widget {}
-.category-widget__heading {
-	margin-bottom: 30px;
-}
 .category {
 	margin-bottom: 30px;
 }
@@ -172,8 +174,6 @@ a.desc:after {
 }
 .category__link--child {}
 
-/* Components 
-==================================== */
 .btn--post-ad {
   background-color: rgba(0,0,0,.5);
 }
@@ -191,9 +191,9 @@ a.desc:after {
   max-width: 100%;
 }
 .gallery__thumbs {
-    margin-bottom: var(--base-margin);
-    padding: var(--base-padding);
-    background-color: #eeeeee;
+  margin-bottom: var(--base-margin);
+  padding: var(--base-padding);
+  background-color: #eeeeee;
 }
 .gallery__thumb {}
 
@@ -275,7 +275,7 @@ a.desc:after {
 .safety__tip {}
 .safety__link {}
 
-/* Card */
+.card {}
 .card-media {
   height: 150px;
   overflow: hidden;
@@ -290,8 +290,3 @@ a.desc:after {
   margin-bottom: 0;
 }
 .card--listing {}
-
-/* utils */
-.u-block {
-  display: block;
-}

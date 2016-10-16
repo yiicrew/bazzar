@@ -1,6 +1,6 @@
 <div class="widget widget--category">
 	<h3 class="widget__heading"><?= t('app', 'Popular Categories') ?></h3>
-	<div class="widget__items row">
+	<div class="widget__content row">
 	<?php foreach ($categories as $category): ?>
 		<div class="col-lg-4 category">
 			<?= a($category->name, $category->url, [
