@@ -3,7 +3,7 @@
 namespace app\models;
 
 use Yii;
-use app\modules\admin\models\Listing;
+use app\models\Listing;
 use dektrium\user\models\Profile;
 
 

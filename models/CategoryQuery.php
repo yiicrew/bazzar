@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\admin\models;
+namespace app\models;
 
 /**
  * This is the ActiveQuery class for [[Category]].

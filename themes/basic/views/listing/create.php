@@ -7,7 +7,7 @@
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\bootstrap\ActiveForm;
-use app\modules\admin\models\Category;
+use app\models\Category;
 
 $this->title = 'Post an ad';
 $this->params['breadcrumbs'][] = $this->title;

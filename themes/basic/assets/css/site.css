@@ -272,18 +272,18 @@ a.desc:after {
 .safety__tip {}
 .safety__link {}
 
-.card {}
-.card-media {
+/* Listing
+================ */
+.listing {}
+.listing__media {
   height: 150px;
+  border-radius: 0.25rem 0.25rem 0 0;
   overflow: hidden;
-  border-radius:  0.25rem 0.25rem 0 0;
   text-align: center;
 }
-.card-media .card-img-top {
-  height: 150px;
+.listing__image {
   max-width: 100%;
 }
-.card-meta {
+.listing__meta {
   margin-bottom: 0;
 }
-.card--listing {}

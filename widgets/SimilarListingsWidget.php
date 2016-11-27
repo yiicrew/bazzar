@@ -4,7 +4,7 @@ namespace app\widgets;
 
 use yii\base\Widget;
 use yii\helpers\Html;
-use app\modules\admin\models\Listing;
+use app\models\Listing;
 
 class SimilarListingsWidget extends Widget 
 {

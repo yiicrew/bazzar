@@ -3,19 +3,19 @@
     <div class="widget__content row">
     <?php foreach ($listings as $l): ?>
         <div class="col-sm-4">
-            <div class="card card--listing">
-                <div class="card-media">
-                    <img class="card-img-top" src="<?= $l->thumbSrc ?>" alt="<?= $l->title ?>">
+            <div class="card listing">
+                <div class="listing__media">
+                    <img class="listing__image" src="<?= $l->thumbSrc ?>" alt="<?= $l->title ?>">
                 </div>
                 <div class="card-block">
-                    <h3 class="card-title">
+                    <h3 class="listing__title">
                         <?= a($l->title, $l->viewUrl, [
                             'title' => $l->title,
-                            'class' => 'card-link'
+                            'class' => 'listing__link'
                         ]) ?>
                     </h3>
                     <p class="card-text"><?= e(truncate($l->description)) ?></p>
-                    <p class="card-text card-meta">
+                    <p class="card-text listing__meta">
                         <small class="text-muted"><?= t('app', 'Posted') ?>: <?= time_ago($l->created_at) ?></small>
                     </p>
                 </div>

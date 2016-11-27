@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\admin\models;
+namespace app\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;

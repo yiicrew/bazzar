@@ -1,13 +1,13 @@
 <?php
 
-namespace app\modules\admin\models;
+namespace app\models;
 
 /**
- * This is the ActiveQuery class for [[Listing]].
+ * This is the ActiveQuery class for [[Message]].
  *
- * @see Listing
+ * @see Message
  */
-class ListingQuery extends \yii\db\ActiveQuery
+class MessageQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
@@ -16,7 +16,7 @@ class ListingQuery extends \yii\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return Listing[]|array
+     * @return Message[]|array
      */
     public function all($db = null)
     {
@@ -25,15 +25,10 @@ class ListingQuery extends \yii\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return Listing|array|null
+     * @return Message|array|null
      */
     public function one($db = null)
     {
         return parent::one($db);
-    }
-
-    public function mostRecent()
-    {
-        return $this->all();
     }
 }
