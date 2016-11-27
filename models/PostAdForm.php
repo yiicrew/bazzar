@@ -62,12 +62,13 @@ class PostAdForm extends Listing
     public function saveImages()
     {
         foreach ($this->imageFiles as $file) {
-            $filename = '/uploads/' . $file->baseName . '.' . $file->extension;
-            if ($file->saveAs(Yii::$app->basePath . '/web' . $filename)) {
+            $path = '/uploads/' . $file->baseName . '.' . $file->extension;
+            if ($file->saveAs(Yii::$app->basePath . '/web' . $path)) {
                 $image = new Image;
-                $image->file_name = $filename;
-                $image->file_type = $file->extension;
-                $image->file_size = $file->size;
+                $image->path = $path;
+                $image->name = $file->baseName . '.' . $file->extension;
+                $image->type = $file->extension;
+                $image->size = $file->size;
                 $image->listing_id = $this->id;
                 $image->save();
             }

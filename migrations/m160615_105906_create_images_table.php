@@ -15,10 +15,11 @@ class m160615_105906_create_images_table extends Migration
     {
         $this->createTable('images', [
             'id' => $this->primaryKey(),
-            'listing_id' => $this->integer(),
-            'file_name' => $this->string()->notNull(),
-            'file_size' => $this->integer()->notNull(),
-            'file_type' => $this->string()->notNull(),
+            'listing_id' => $this->integer()->notNull(),
+            'path' => $this->string()->notNull(),
+            'name' => $this->string()->notNull(),
+            'size' => $this->integer()->notNull(),
+            'type' => $this->string()->notNull(),
             'created_at' => $this->datetime(),
             'updated_at' => $this->datetime()
         ]);
@@ -27,9 +28,10 @@ class m160615_105906_create_images_table extends Migration
         // add images for dummy listing
         $this->insert('images', [
             'listing_id' => 1,
-            'file_name' => '/uploads/bike_1.jpg',
-            'file_size' => 0,
-            'file_type' => 'jpg',
+            'path' => '/uploads/bike_1.jpg',
+            'name' => 'bike_1.jpg',
+            'size' => 0,
+            'type' => 'jpg',
             'created_at' => new Expression('NOW()')
         ]);
     }

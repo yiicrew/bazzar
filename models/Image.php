@@ -9,9 +9,10 @@ use Yii;
  *
  * @property integer $id
  * @property integer $listing_id
- * @property string $file_name
- * @property integer $file_size
- * @property string $file_type
+ * @property string $path
+ * @property string $name
+ * @property integer $size
+ * @property string $type
  * @property string $created_at
  * @property string $updated_at
  */
@@ -31,10 +32,10 @@ class Image extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['listing_id', 'file_size'], 'integer'],
-            [['file_name', 'file_size', 'file_type'], 'required'],
+            [['listing_id', 'path', 'name', 'size', 'type'], 'required'],
+            [['listing_id', 'size'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
-            [['file_name', 'file_type'], 'string', 'max' => 255],
+            [['path', 'name', 'type'], 'string', 'max' => 255],
         ];
     }
 
@@ -46,9 +47,10 @@ class Image extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'listing_id' => Yii::t('app', 'Listing ID'),
-            'file_name' => Yii::t('app', 'File Name'),
-            'file_size' => Yii::t('app', 'File Size'),
-            'file_type' => Yii::t('app', 'File Type'),
+            'path' => Yii::t('app', 'Path'),
+            'name' => Yii::t('app', 'Name'),
+            'size' => Yii::t('app', 'Size'),
+            'type' => Yii::t('app', 'Type'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
         ];
@@ -62,14 +64,14 @@ class Image extends \yii\db\ActiveRecord
     {
         return new ImageQuery(get_called_class());
     }
-    
+
     public function getPublicUrl()
     {
-        return $this->file_name;
+        return $this->path;
     }
 
     public function getThumbSrc()
     {
-       return $this->file_name;
+       return $this->path;
     }
 }
