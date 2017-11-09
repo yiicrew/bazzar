@@ -12,9 +12,9 @@ class User extends BaseUser
 
     public function rules()
     {
-        $rules = parent::rules();
-        $rules[] = ['name', 'required'];
-        return $rules;
+        return array_merge(parent::rules(), [
+            ['name', 'required']
+        ]);
     }
 
     public function getName()

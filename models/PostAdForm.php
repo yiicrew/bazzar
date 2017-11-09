@@ -21,9 +21,9 @@ class PostAdForm extends Listing
 
     public function rules()
     {
-        $rules = parent::rules();
-        $rules[] = ['imageFiles', 'file', 'skipOnEmpty' => false, 'extensions' => 'png,jpg', 'maxFiles' => 4];
-        return $rules;
+        return array_merge(parent::rules(), [
+            ['imageFiles', 'file', 'skipOnEmpty' => false, 'extensions' => 'png,jpg', 'maxFiles' => 4]
+        ];
     }
 
     public function attachUser($user)
